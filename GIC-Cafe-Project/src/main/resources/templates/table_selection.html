@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>table</title>
+    <style>
+        *, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    :root {
+    --bg-available:#4e961b;
+    --bg-unpaid:#c55a11;
+    --bg-busy:#ff0000;
+    --bg-main:#f1f1f1;
+    --bg-infor:#deebf7;
+    }
+
+    body {
+    min-width: 100vw;
+    min-height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    body #container {
+    min-width: 100%;
+    background-color: var(--bg-main);
+    display: flex;
+    }
+    body #container > div {
+    width: 100%;
+    }
+    body #container .table_container {
+    --size-gap:.7rem;
+    padding: var(--size-gap);
+    background-color: var(--bg-main);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--size-gap);
+    }
+    body #container .table_container .box {
+    background-color: var(--bg-available);
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    border-radius: 2px;
+    cursor: pointer;
+    color: white;
+    }
+    body #container .table_container .box.status0 {
+    background-color: var(--bg-busy);
+    }
+    body #container .table_container .box.status2 {
+    background-color: var(--bg-unpaid);
+    }
+    body #container .infor_container {
+    background-color: var(--bg-infor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    body #container .infor_container .sub_infor {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    }
+    body #container .infor_container .sub_infor h1 {
+    text-align: center;
+    }
+    body #container .infor_container .sub_infor > div {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+    }
+</style>
+</head>
+<body>
+    <div id="container">
+        <div class="table_container overflow-y-auto h-[700px]">
+            <div th:each="table: ${tables}" th:text="${table.number}" th:class="${'box status' + table.availability}" th:onclick="select([[${table.id}]], [[${table.availability}]])"></div>
+        </div>
+        <div class="infor_container">
+            <div class="sub_infor">
+                <h1 class="text-3xl font-bold">Table Information</h1>
+                <br>
+                <br>
+                
+                <div class="number">
+                    <div class="label">Table&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;</div>
+                    <div id="tid" class="datas tb_table"></div>
+                </div>
+                <div class="status">
+                    <div class="label">Status&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;</div>
+                    <div id="status" class="datas tb_status"></div>
+                </div>
+                <div>
+                    <div class="label">Actions&nbsp;&nbsp;: </div>
+                    <form th:action="@{/set_table_availeble}" method="POST">
+                        <input id="tida" type="number" name="tableId" class="hidden">
+                        <button id="availeble-btn" type="submit" class="text-sm bg-[#4e961b] items-center justify-center px-2 rounded text-white h-[30px] hidden">Set as available</button>
+                    </form>
+                    <form th:action="@{/set_table_busy/save_invoice}" method="POST">
+                        <input id="tidb" type="number" name="tableId" class="hidden">
+                        <button id="busy-btn" type="submit" class="text-sm bg-[#ff0000] h-[30px] items-center justify-center px-2 rounded text-white hidden">Select as busy</button>
+                    </form>
+                    <form th:action="@{/set_table_unpaid/save_invoice}" method="POST">
+                        <input id="tidu" type="number" name="tableId" class="hidden">
+                        <button id="unpaid-btn" type="submit" class="h-[30px] text-sm bg-[#c55a11] items-center justify-center px-2 rounded text-white hidden">Select as unpaid</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function select(tid, aid) {
+            document.getElementById("tid").textContent = tid
+            if(aid == 0){
+                document.getElementById("status").textContent = "Busy"
+                document.getElementById("availeble-btn").style.display = "flex"
+                document.getElementById("unpaid-btn").style.display = "none"
+                document.getElementById("busy-btn").style.display = "none"
+                
+                document.getElementById("tida").value = tid
+                console.log(document.getElementById("tidb").value);
+            }
+            else if(aid == 1){
+                document.getElementById("status").textContent = "Availeble"
+                document.getElementById("availeble-btn").style.display = "none"
+                document.getElementById("unpaid-btn").style.display = "flex"
+                document.getElementById("busy-btn").style.display = "flex"
+                
+                document.getElementById("tidu").value = tid
+                document.getElementById("tidb").value = tid
+                
+                console.log(document.getElementById("tida").value);
+            }
+            else if(aid == 2){
+                document.getElementById("status").textContent = "Unpaid"
+                document.getElementById("availeble-btn").style.display = "flex"
+                document.getElementById("unpaid-btn").style.display = "none"
+                document.getElementById("busy-btn").style.display = "none"
+
+                document.getElementById("tida").value = tid
+                console.log(document.getElementById("tidu").value);
+            }
+
+        }
+    </script>
+</body>
+</html>

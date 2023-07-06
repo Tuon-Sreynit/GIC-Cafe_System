@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin HomeScreen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Molengo&display=swap" rel="stylesheet">
+</head>
+<style>
+   *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        font-family: 'Molengo', sans-serif;
+    }
+    .wrapper1 .header table tr{
+        width: 100%;
+    }
+    .wrapper1 table {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-collapse: collapse;
+        background-color: #6a4928;
+        width: 100%;
+    }
+    .wrapper1 tr{
+        width: 100%;
+        border-bottom: 1px solid #9d4f2a;
+        animation-delay: 0.2s;
+    }
+    .wrapper1 td, th {
+        padding: 8px ;
+        margin: 5px 0;
+        text-align: left;
+        
+    }
+    .wrapper1 td i, td a, th a {
+        transition: 1s;
+        font-size: 20px;
+        
+    }
+    .wrapper1 tr:hover {
+        color: #FFD580;
+        background: transparent;
+        border-bottom: 1px solid #ddd2bd;
+    }
+    .wrapper2 .tab_categories {
+        background-color: #6a4928;
+        border: 2px solid #e4e2df;
+        padding: 10px 7px;
+    }
+    .wrapper2 .tab_categories button{
+        color: white;
+        font-size: 22px;
+        text-align: center;
+        margin-left: 25px;
+        border-top: 1px solid #b77c0f;
+        border-bottom: 1px solid #b77c0f;
+        padding: 9px 20px;
+        background-color:transparent ;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+    .wrapper2 .tab_categories button:hover{
+        color: black;
+        background-color: #c9987d;
+        box-shadow: inset 0px 10px 20px 2px #fff;
+    }
+    .wrapper2 .tabcontent{
+        width: 100%;
+    }
+    .wrapper2 .tabcontent table{
+        border-collapse: separate;
+        border-spacing: 0 10px;
+        margin-left: 12px;
+        text-align: center;
+        margin: 5px;
+        padding: 5px;
+    }
+    .wrapper2 .tabcontent table .list{
+        width: 100%;
+        font-size: 18px;
+        background-color: #faebd7; 
+    }
+    .wrapper2 .tabcontent table .list th{
+        width: 100vw;
+        padding: 10px 10px;
+        text-align: center;
+    }
+    .wrapper2 .tabcontent table tr td i{
+        width: 15px;
+        margin-left: 10px;
+    }
+    .wrapper2 .tabcontent table tr td .bx-pencil:hover{
+        color: blue; 
+    }
+    .wrapper2 .tabcontent table tr td .bx-trash:hover{
+        color: red;
+    }
+    .wrapper3 .container .header{
+        border-bottom: 1px solid #ddd2bd;
+        border-top: 1px solid #ddd2bd;
+        color: #fff;
+    } 
+    .content{
+        border-radius: 5px;
+        box-shadow: 5px 5px 5px #aaaaaa;
+    }
+    .gridSize{
+        display: grid;
+        grid-template-columns: 1fr 0.5fr 1fr;
+        margin-right: 3px;
+    }
+</style>
+
+<body class="w-[100vw] h-[100vh]">
+    
+    <div class="container flex">
+        <div class="wrapper1 w-[25%] h-[100vh] bg-[#6a4928] text-white">
+            <div class="profile_admin w-[169px] h-fit  m-auto mt-7 mb-20 text-center">
+                <img class="aspect-square object-cover rounded-[999px] border-2 shadow-lg shadow-white" src="data:image/jpeg;base64," th:attrappend="src=${admin.photo}" alt="">
+                <div class="name text-3xl" th:text="${admin.username}"></div>
+                <div class="role"><span></span>Admin</div>
+            </div>
+            <div class="header w-[100%]">
+                <table >
+                    <tr>
+                        <td><i class='bx bxs-user' ></i></td>
+                        <td><a th:href="@{/addCashier}">New Cashier</a></td>
+                    </tr>
+                    <tr>
+                        <td><i class='bx bxs-coffee'></i></td>
+                        <td><a th:href="@{/addDrink}">New Drinks</a></td>
+                    </tr>
+                    <tr>
+                        <td><i class='bx bxs-cheese' ></i></td>
+                        <td><a th:href="@{/addFood}">New Food</a></td>
+                    </tr>
+                    <tr>
+                        <td><i class='bx bxs-category' ></i></td>
+                        <td><a th:href="@{/addDrinkCategory}">New Drink Category</a></td>
+                    </tr>
+                    <tr>
+                        <td><i class='bx bxs-category-alt' ></i></td>
+                        <td><a th:href="@{/addFoodCategory}">New Food Category</a></td>
+                    </tr>
+                    <tr>
+                        <td><i class='bx bx-table' ></i></td>
+                        <td><a th:href="@{/table_management}">Manage Table</a></td>
+                    </tr>
+                    <tr>
+                        <td><i class='bx bxs-book' ></i></td>
+                        <td><a th:href="@{/order_history}">Order History</a></td>
+                    </tr>
+                    <tr>
+                        <td><i class='bx bxs-cog' ></i></td>
+                        <td><a th:href="@{/login}">Log Out</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="wrapper2 w-[45%] h-[100vh]">
+            <div class="tab_categories">
+                <button class="tablinks" onclick="openList(event, 'Cashier')">Cashier</button>
+                <button class="tablinks" onclick="openList(event, 'Food')">Food</button>
+                <button class="tablinks" onclick="openList(event, 'Drink')">Drink</button>
+            </div>
+            <div id="Cashier" class="tabcontent">
+                <table>
+                    <tr class="list">
+                        <th>NO</th>
+                        <th>Cashier Name</th>
+                        <th>Username</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr th:each="cashier: ${cashiers}">
+                        <td th:text="${cashier.id}"></td>
+                        <td>
+                            <a th:href="@{/detailCashier/{id} (id=${cashier.id})}">
+                                <span th:text="${cashier.firstName}"></span>
+                                <span th:text="${cashier.lastName}"></span>
+                            </a>
+                        </td>
+                        <td class="text-[22px]">
+                            <span th:text="${cashier.username}"></span>
+                        </td>
+                        
+                        <td>
+                            <a th:href="@{/showUpdateCashier(cashierId=${cashier.id})}">
+                                <i class='bx bx-pencil' ></i>
+                            </a>
+                            <a th:href="@{/deleteCashier(cashierId=${cashier.id})}">
+                                <i class='bx bx-trash' ></i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="Food" class="tabcontent hidden">
+                <table>
+                    <tr class="list">
+                        <th>NO</th>
+                        <th>Food Code</th>
+                        <th>Food Name</th>
+                        <th>Price($)</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr th:each="food: ${foods}">
+                        <td th:text="${food.id}"></td>
+                        <td>
+                            <span th:text="${food.food_code}"></span>
+                        </td>
+                        <td>
+                            <a th:href="@{/detailFood/{id} (id=${food.id})}">
+                                <span th:text="${food.food_name}"></span>
+                            </a>
+                        </td>
+                        <td th:text="${food.food_price}"></td>
+                        <td>
+                            <a th:href="@{/showUpdateFood(foodId=${food.id})}">
+                                <i class='bx bx-pencil' ></i>
+                            </a>
+                            <a th:href="@{/deleteFood(foodId=${food.id})}">
+                                <i class='bx bx-trash' ></i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="Drink" class="tabcontent hidden">
+                <table>
+                    <tr class="list">
+                        <th>NO</th>
+                        <th>Drink Code</th>
+                        <th>Drink Name</th>
+                        <th>Price($)</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr th:each="drink: ${drinks}">
+                        <td th:text="${drink.id}"></td>
+                        <td th:text="${drink.drinkCode}"></td>
+                        <td><a th:href="@{/detailDrink/{id} (id=${drink.id})}"><p th:text="${drink.drinkName}"></p></a></td>
+                        <td th:text="${drink.price}"></td>
+                        <td>
+                            <a th:href="@{/showUpdateDrink(drinkId=${drink.id})}">
+                                <i class='bx bx-pencil'></i>
+                            </a>
+                            <a th:href="@{/deleteDrink(drinkId=${drink.id})}">
+                                <i class='bx bx-trash' ></i>
+                            </a>
+                        </td>
+                    </tr>
+                </table>   
+            </div>
+        </div>
+        <div class="wrapper3 w-[30%] h-[100vh] bg-[#6a4928] overflow-y-auto " style="margin-bottom: 0%;">
+            <div class="container flex justify-center items-center">
+                <div class="box flex flex-col justify-center items-center">
+                    <div class="w-[90%] header text-3xl font-bold m-5 py-5 text-center">
+                        <h1>Cashier Information</h1>
+                    </div>
+                    <div class="box_wrapp w-[80%] flex flex-col justify-center items-center my-10 text-xl">
+                        <img src="data:image/jpeg;base64," th:attrappend="src=${cashier.photo}" alt="" class="aspect-[4/4] object-cover">
+                        <div class="content m-5 bg-[#D5F3FE] p-5 w-full h-[fit]">
+                            <div class="gridSize" >
+                                <div class="font-bold">Name</div>
+                                <div>:</div>
+                                <div>
+                                    <span th:text="${cashier.firstName}"></span>   
+                                    <span th:text="${cashier.lastName}"></span> 
+                                </div>
+                            </div>
+                            <div class="gridSize">
+                                <div class="font-bold">Gender</div>
+                                <div>:</div>
+                                <div>
+                                    <p th:text="${cashier.sex}"></p> 
+                                </div>
+                            </div>
+                            <div class="gridSize" >
+                                <div class="font-bold">Age</div>
+                                <div>:</div>
+                                <div><p th:text="${cashier.age}"></p></div>
+                            </div>
+                            <div class="gridSize" >
+                                <div class="font-bold">Username</div>
+                                <div>:</div>
+                                <div>
+                                    <p th:text="${cashier.username}"></p> 
+                                </div>
+                            </div>
+                            <div class="gridSize" >
+                                <div class="font-bold">Password</div>
+                                <div>:</div>
+                                <div>**********</div>
+                            </div>
+                            <div class="gridSize" >
+                                <div class="font-bold">Date of Birth</div>
+                                <div>:</div>
+                                <div>
+                                    <p th:text="${cashier.dob}"></p> 
+                                </div>
+                            </div>
+                            <div class="gridSize" >
+                                <div class="font-bold">Hired Date</div>
+                                <div>:</div>
+                                <div>
+                                    <p th:text="${cashier.hiredDate}"></p> 
+                                </div>
+                            </div>
+                        </div>
+                            
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+        
+    <script>
+        function openList(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        document.getElementById("Cashier").click();
+    </script>
+</body>     
+</html>  

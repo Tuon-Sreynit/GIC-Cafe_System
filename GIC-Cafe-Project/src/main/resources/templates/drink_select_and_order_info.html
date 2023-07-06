@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drink_select_and_order_info</title>
+    <link rel="stylesheet" th:href="@{/css/drink_select_and_order_info.css}">
+    <script src="https://cdn.tailwindcss.com"></script>
+<body>
+    <div class="wrapper">
+        <div class="container_drinks">
+            <div class="row drink_scroll">
+                <div class="left_scroll">
+                    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                </div>
+                <div class="drink_types">
+                    <button th:each="dCategory: ${dCategories}" th:text="${dCategory.drinkCategoryName}" class="drinks frappes" th:onclick="openDrinkMenu([[${'d' + dCategory.id}]] ,this, '#993003')" style="outline: none;"></button>
+                    <button th:each="fCategory: ${fCategories}" th:text="${fCategory.foodCategoryName}" class="drinks frappes" th:onclick="openDrinkMenu([[${'f' + fCategory.id}]] ,this, '#993003')" style="outline: none;"></button>
+                </div>
+                <div class="right_scroll">
+                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="row line1"></div>
+            <div class="row drink_menu">
+                <div th:each="dCategory: ${dCategories}" th:id="${'d' + dCategory.id}" class="drink_content">
+                    <div class="hot cafe">
+                        <div th:each="drink: ${drinks}" th:if="${drink.drinkCategoryName == dCategory.drinkCategoryName}" class="cafe-row">
+                            <img class="rounded-lg w-full aspect-[3/4] object-cover" th:onclick="openForm([[${drink.id}]])" src="data:image/jpeg;base64," th:attrappend="src=${drink.photo}" alt="hot-cafe-latte1" >
+                            <p class="cafe-name" th:text="${drink.drinkName}"></p>
+                        </div>
+                    </div>
+                </div>
+                <div th:each="fCategory: ${fCategories}" th:id="${'f' + fCategory.id}" class="drink_content">
+                    <div class="hot cafe">
+                        <div th:each="food: ${foods}" th:if="${food.food_category_name == fCategory.foodCategoryName}" class="cafe-row">
+                            <img class="rounded-lg w-full aspect-[3/4] object-cover" th:onclick="openForm2([[${food.id}]])" src="data:image/jpeg;base64," th:attrappend="src=${food.photo}" alt="hot-cafe-latte1">
+                            <p class="cafe-name" th:text="${food.food_name}"></p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="order_info flex flex-col justify-between">
+            <div>
+                <h2 class="flex justify-center text-[35px] font-bold my-2 text-yellow-100">Order Information</h2>
+                <div class="line2 mt-5"></div>
+                <div class="flex justify-center">
+                    <b class="text-lg text-white">Drinks</b>
+                </div>
+                <div class="line3"></div>
+                <div th:each="dOrder, iStat : ${drinkOrders}" class="display_info text-white">
+                    <div class="id_title">
+                        <p th:text="${iStat.index + 1}">1</p>
+                        <p th:text="${dOrder.drinkName}" class="p_title">Iced Americano</p>
+                    </div>
+                    <div class="size_quantity_price">
+                        <p th:text="${dOrder.sizeName}">R</p>
+                        <p th:text="${dOrder.amount}">1</p>
+                        <p th:text="${dOrder.drinkPrice}">2.3</p>
+                    </div>
+                    <a th:href="@{/delete_drink_order/{id} (id=${dOrder.id})}" class="edit_delete text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="line2"></div>
+                <div class="flex justify-center">
+                    <b class="text-lg text-white">Foods</b>
+                </div>
+                <div class="line3"></div>
+                <div th:each="fOrder, iStat : ${foodOrders}" class="display_info text-white">
+                    <div class="id_title">
+                        <p th:text="${iStat.index + 1}">2</p>
+                        <p th:text="${fOrder.foodName}" class="p_title"></p>
+                    </div>
+                    <div class="size_quantity_price">
+                        <p th:text="${fOrder.sizeName}">R</p>
+                        <p th:text="${fOrder.amount}"></p>
+                        <p th:text="${fOrder.foodPrice}">2.5</p>
+                    </div>
+                    <a th:href="@{/delete_food_order/{id} (id=${fOrder.id})}" class="edit_delete text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+            <div class="flex justify-between">
+                <a th:href="@{/login}">
+                    <button class="bg-yellow-100 p-2 rounded m-2 text-black">Logout</button>
+                </a>
+                <a th:href="@{/table_selection}">
+                    <button class="bg-yellow-100 p-2 rounded m-2 text-black">Checkout</button>
+                </a>    
+            </div>
+        </div>
+    </div>
+
+    <!-- The pop-up form -->
+    <div id="myForm" class="popup-form">
+        <!-- Form content -->
+        <div class="popup-form-content bg-white p-4 rounded w-1/2">
+            <h2 class="text-lg font-bold mb-2">Customize Your Order</h2>
+            <form method="POST" th:action="@{/save_drink_order}">
+                <input name="drinkId" id="sDrinkId" type="number" class="hidden">
+                <div id="size" class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="size">Size:</label>
+                    <select name="size" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="size">
+                        <option th:each="dSize: ${drinkSizes}" th:value="${dSize.id}" th:text="${dSize.name}"></option>
+                    </select>
+                </div>
+                <div id="addon" class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="flavor">Flavor:</label>
+                    <div class="">
+                        <div class="mr-4">
+                            <input type="checkbox" id="cream" name="cream">
+                            <label class="ml-2" for="cream">Cream</label>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2" for="sugar">Sugar:</label>
+                            <select class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sugar">
+                                <option>sugar: 25%</option>
+                                <option>sugar: 50%</option>
+                                <option>sugar: 75%</option>
+                                <option>sugar: 100%</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="amount">Amount:</label>
+                        <input name="amount" type="number" value="1" min="1" id="amount" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="button" onclick="closeForm()" class="bg-[#652a0f] hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-4">Cancel</button>
+                        <button type="submit" class="bg-[#ca8f73] hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="myForm2" class="popup-form">
+        <div class="popup-form-content bg-white p-4 rounded w-1/2">
+            <h2 class="text-lg font-bold mb-2">Customize Your Order</h2>
+            <form method="POST" th:action="@{/save_food_order}">
+                <input name="foodId" id="sFoodId" type="number" class="hidden">
+                <div id="size" class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2" for="size">Size:</label>
+                    <select name="size" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="size">
+                        <option th:each="fSize: ${foodSizes}" th:value="${fSize.id}" th:text="${fSize.name}"></option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="amount">Amount:</label>
+                        <input name="amount" type="number" value="1" min="1" id="amount" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="button" onclick="closeForm2()" class="bg-[#652a0f] hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-4">Cancel</button>
+                        <button type="submit" class="bg-[#ca8f73] hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementsByClassName("drinks")[0].click();
+
+        const prev_scroll = document.querySelector('.left_scroll');
+        const next_scroll = document.querySelector('.right_scroll');
+        const drink_type_scroll = document.querySelector('.drink_types');
+
+        prev_scroll.addEventListener('click', () => {
+            drink_type_scroll.scrollLeft -= 250;
+        })
+
+        next_scroll.addEventListener('click', () => {
+            drink_type_scroll.scrollRight += 250;
+        })
+
+        function openDrinkMenu(drink_type_name, ele, color) {
+            var i, drink_content, drinks;
+            drink_content = document.getElementsByClassName("drink_content");
+            for(i=0; i<drink_content.length; i++) {
+                drink_content[i].style.display = "none";
+            }
+            drinks = document.getElementsByClassName("drinks");
+            for(i=0; i<drinks.length; i++) {
+                drinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(drink_type_name).style.display = "block";
+            ele.style.backgroundColor = color;
+        }
+        document.getElementById("defaultOpen").click();
+
+
+        /* Function to open the pop-up form */
+        function openForm(id) {
+            document.getElementById("sDrinkId").value = id+""
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        /* Function to close the pop-up form */
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+
+        /* Function to open the pop-up form */
+        function openForm2(id) {
+            document.getElementById("sFoodId").value = id+""
+            document.getElementById("myForm2").style.display = "block";
+        }
+
+        /* Function to close the pop-up form */
+        function closeForm2() {
+            document.getElementById("myForm2").style.display = "none";
+        }
+    </script>
+</body>
+</html>

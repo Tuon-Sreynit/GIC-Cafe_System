@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Selection</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  background-color: #EEEEEE;
+}
+
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 300px;
+  height: 100vh;
+  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.Nav .logo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.Nav .logo img {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-left: 6rem;
+}
+.Nav .logo p {
+  display: flex;
+  align-items: center;
+  color: black;
+  justify-content: center;
+}
+.Nav .box {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  overflow: hidden;
+}
+.Nav .box .table, .Nav .box .sales-management, .Nav .box .logout {
+  width: 100%;
+  height: 40px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+.Nav .box .table:hover, .Nav .box .sales-management:hover, .Nav .box .logout:hover {
+  background: blueviolet;
+  color: black;
+}
+.Nav .box .table i, .Nav .box .sales-management i, .Nav .box .logout i {
+  margin-right: 5px;
+}
+.Nav .box .table h3, .Nav .box .sales-management h3, .Nav .box .logout h3 {
+  font-size: 18px;
+}
+.Nav .avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.Nav .avatar img {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+.Nav .avatar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+}
+
+.menu_bar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.menu_bar a {
+  text-decoration: none;
+  color: black;
+}
+.menu_bar .box {
+  padding: 2rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  background: rgb(224, 224, 224);
+}
+.menu_bar .box:hover {
+  transition: 1s;
+  background: green;
+}
+.menu_bar .box:hover h3 {
+  color: white;
+}
+.menu_bar .box img {
+  height: 4rem;
+}
+.menu_bar .box h3 {
+  font-size: 1.8rem;
+  color: black;
+}/*# sourceMappingURL=style.css.map */
+</style>
+<body>
+    <div class="Nav">
+        <div class="logo">
+            <img src="https://freepngimg.com/save/32668-coffee-logo-transparent-image/2048x1536" alt="">
+            <p>GIC Café</p>
+        </div>
+       <div class="box">
+            <div class="table" id="table">
+              <i class='bx bx-table' ></i>
+              <h3>Table</h3>
+            </div>
+            <div class="sales-management" id="sales-management">
+              <i class='bx bxs-store' ></i>
+              <h3>Sales Management</h3>
+            </div>
+            <div class="logout" id="logout">
+              <i class='bx bxs-cog' ></i>
+              <h3>Logout</h3>
+            </div>
+           
+            
+       </div>
+       <div class="avatar">
+            <img src="https://www.svgrepo.com/show/382106/male-avatar-boy-face-man-user-9.svg" alt="">
+            <a href="#"><p>Tonghy123</p></a>
+       </div>
+       
+
+    </div>
+   <script>
+    const table = document.getElementById("table");
+const salesManagement = document.getElementById("sales-management");
+const logout = document.getElementById("logout");
+
+const designColor = "#EEEEEE";
+
+let counter = 0;
+
+
+table.addEventListener("mouseover", () => {
+    table.style.background = designColor;
+    table.style.color = "white";
+    table.addEventListener("click", () => {
+        counter = 0;
+        if (counter === 0) {
+            table.style.background = designColor;
+            table.style.color = "black";
+            logout.style.background = "transparent";
+            logout.style.color = "black";
+            salesManagement.style.background = "transparent";
+            salesManagement.style.color = "black";
+            document.body.style.color="black"
+        }
+    })
+})
+
+table.addEventListener("mouseleave", () => {
+    if (counter !== 0) {
+        table.style.background = "transparent";
+        table.style.color = "black";
+    }
+})
+
+salesManagement.addEventListener("mouseover", () => {
+    salesManagement.style.background = designColor;
+    salesManagement.style.color = "black";
+    salesManagement.addEventListener("click", () => {
+        counter = 1;
+        if (counter === 1) {
+            salesManagement.style.background = designColor;
+            salesManagement.style.color = "black";
+            logout.style.background = "transparent";
+            logout.style.color = "black";
+            table.style.background = "transparent";
+            table.style.color = "black";
+        }
+    })
+})
+
+salesManagement.addEventListener("mouseleave", () => {
+    if (counter !== 1) {
+        salesManagement.style.background = "transparent";
+        salesManagement.style.color = "black";
+    }
+})
+
+logout.addEventListener("mouseover", () => {
+    logout.style.background = designColor;
+    logout.style.color = "white";
+    logout.addEventListener("click", () => {
+        counter = 2;
+        if (counter === 2) {
+            logout.style.background = designColor;
+            logout.style.color = "black";
+            salesManagement.style.background = "transparent";
+            salesManagement.style.color = "black";
+            table.style.background = "transparent";
+            table.style.color = "black";
+        }
+    })
+})
+
+logout.addEventListener("mouseleave", () => {
+    if (counter !== 2) {
+        logout.style.background = "transparent";
+        logout.style.color = "black";
+    }
+})
+
+salesManagement.addEventListener("click", () => {
+    counter = 1;
+    if (counter === 1) {
+        salesManagement.style.backgroundColor = designColor;
+        salesManagement.style.color = "white";
+        table.style.backgroundColor = "transparent";
+        logout.style.backgroundColor = "transparent";
+    }
+})
+
+logout.addEventListener("click", () => {
+    counter = 2;
+    if (counter === 2) {
+        logout.style.backgroundColor = designColor;
+        logout.style.color = "white";
+        table.style.backgroundColor = "transparent";
+        salesManagement.style.backgroundColor = "transparent";
+    }
+})
+   </script>
+</body>
+</html>

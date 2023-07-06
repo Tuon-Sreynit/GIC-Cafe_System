@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reciept</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+    <style>
+        @media print {
+            .container {
+                width: 70% !important;
+            }
+        }
+        .font{
+            font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+        }
+        .fontp{
+            font-family: 'Bahnschrift', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container w-[40%] h-[650px] m-auto py-3 overflow-auto">
+        <div class="text-center  my-3 ">
+            <h1 class="font font-bold text-[50px]">GIC Cafe</h1>
+            <p class="text-[20px] tracking-widest fontp">CAFFEE AND BAKERY</p>
+            <p class="text-[20px] tracking-widest fontp">Receipt</p>
+            
+        </div>
+        <div class="content p-3">
+            <div class="w-[100%] border-[1px] border-solid border-gray-600  "></div>
+            <div class="w-[40%] font-500 py-3 flex justify-between">
+                <div><p>Order Number : </p></div>
+                <div><span><b th:text="${invoice.id}"></b></span></div>
+            </div>
+            <div class="line w-[100%] border-[1px] border-solid border-gray-600 "></div>
+            <div class="py-3 flex justify-between">
+                <p class="">GIC (ITC) | 09373273</p>
+                <p class=""><a href="" class="hover:text-blue-300 ">browncoffee.com.kh</a></p>
+            </div>
+            <div class="line w-[100%] border-[1px] border-solid border-gray-600 "></div>
+            <div class="sub flex justify-between py-3">
+                <div class="con font-bold">DINE IN</div>
+                <div class="con font-bold">BILL</div>
+                <div class="con font-bold">193838</div>
+            </div>
+            <div class="line w-[100%] border-[1px] border-solid border-gray-600 "></div>
+            <div class="sub flex justify-between py-3">
+                <div class="sub-con justify-between">
+                    <div class="con flex justify-between">
+                        <div>Cashier : </div>
+                        <div>
+                            <span class="font-semibold" id="username"></span>
+                        </div>
+                    </div>
+                    <div class="con flex justify-between">
+                        <div>T-In :</div> 
+                        <div>
+                            <span class="font-semibold" th:text="${invoice.created_at}"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sub-con">
+                    <div class="con flex justify-between">
+                        <div> Table :</div> 
+                        <div>
+                            <span class="font-semibold" th:text="${invoice.table_id}"></span>
+                        </div>
+                    </div>
+                    <div class="con flex justify-between">
+                        <div>T-Out :</div>
+                        <div>
+                            <span class="font-semibold" th:text="${receipt.created_at}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="line w-[100%] border-[1px] border-solid border-gray-600 "></div>
+            <div class="sub py-3 flex justify-between">
+                <div class="con font-bold">Description</div>
+                <div class="con font-bold">Quality</div>
+                <div class="con font-bold">Unit Price</div>
+                <div class="con font-bold">Amount</div>
+            </div>
+            <div class="line w-[100%] border-[1px] border-solid border-gray-600 "></div>
+            <div class="sub-con py-3 ">
+                <div class="flex justify-between" th:each="food: ${foods}">
+                    <div class="con" th:text="${food.foodName}">Apple Carrot</div>
+                    <div class="con" th:text="${food.sizeName}">Regular 1</div>
+                    <div class="con" th:text="${food.foodPrice + food.sizePrice}">2.05</div>
+                    <div class="con" th:text="${food.amount}">2.05</div>
+                </div>
+                <div class="flex justify-between" th:each="drink: ${drinks}">
+                    <div class="con" th:text="${drink.drinkName}">Cappuccino</div>
+                    <div class="con" th:text="${drink.sizeName}">Regular 1</div>
+                    <div class="con" th:text="${drink.drinkPrice + drink.sizePrice}">2.40</div>
+                    <div class="con" th:text="${drink.amount}">2.40</div>
+                </div>
+            </div>
+            <div class="line w-[100%] border-[1px] border-solid border-gray-600 "></div>
+            <div class="w-full flex justify-end">
+                <div class="py-3 w-[70%] h-fit  justify-end">
+                    <div class="sub_total flex justify-between">
+                        <p class="font-semibold">Total</p>
+                        <p><span class="font-bold" th:text="${invoice.price}"></span></p>
+                    </div>
+                    <div class="line w-[100%] border-[1px] border-solid border-gray-600 "></div>
+                    <div class="grand_totals flex justify-between">
+                        <p class="">Cash received</p>
+                        <p><span class="" th:text="${receipt.cash_received}"></span></p>
+                    </div>
+                    <div class="line w-[100%] border-[1px] border-solid border-gray-600 "></div>
+                    <div class="grand_totals flex justify-between">
+                        <p class="">Change</p>
+                        <p><span class="" th:text="${receipt.cash_change}"></span></p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="line w-[100%] border-[1px] border-solid border-gray-600 "></div>
+        </div>
+        <div class="footer text-center">
+            <div class="pwd">
+                <p>WIFI Password : <span>giccafegroup14</span></p>
+            </div>
+            <div class="del">
+                <b>Delivery Hotline : <span>023215 215</span></b>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <a th:href="@{/clear_current_order}" class="font-bold text-white py-2 px-5 bg-gray-400 rounded-lg">Finish</a>
+    </div>
+    <script>
+        document.getElementById("username").textContent = localStorage.getItem("username")
+    </script>
+</body>
+</html>

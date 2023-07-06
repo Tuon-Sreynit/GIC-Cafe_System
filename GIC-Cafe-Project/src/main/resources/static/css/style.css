@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Maven Pro', sans-serif;
+}
+.popup_button button{
+    margin-top: 2rem;
+    margin-left: 1rem;
+    padding: 1rem;
+}
+.main_wrapper{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper_container{
+    width: 25rem;
+    height: 33rem;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #eefbfb;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.first_row{
+    display: flex;
+    gap: 1rem;
+}
+.second_row{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.third_row{
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.zero_row{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+.box{
+    background-color: rgb(107, 58, 152);
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  
+  
+}
+.box_cencel{
+    background-color: blueviolet;
+    width: 7rem;
+    height: 4rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.box_cencel:hover{
+    background-color: orange;
+    color: white;
+}
+.box_ok{
+    background-color: blueviolet;
+    width: 7rem;
+    height: 4rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.box_ok:hover{
+    background-color: orange;
+    color: white;
+}
+.box_{
+    background-color: blueviolet;
+    width: 7rem;
+    height: 4rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.box_delete{
+    background-color: blueviolet;
+    width: 7rem;
+    height: 4rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.box_delete:hover{
+    background-color: orange;
+    color: white;
+}
+.box:hover{
+    background-color: orange;
+    color: white;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.number_box{
+    margin-bottom: .5rem;
+    width: 22rem;
+    height: 4rem;
+    border: 1px solid black;
+    color: black;
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    
+}
+.total_change_row{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}

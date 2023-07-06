@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Histories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Molengo&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+</head>
+<body>
+  <div id="container" class="h-[650px] overflow-y-scroll">
+    <div class="order">
+      <h1 class="bg-[#6a4928] text-white text-2xl font-bold"> Histories</h1>
+      <div  id="invoiceTable" class="table">
+        <table>
+          <tr>
+            <th>No</th>
+            <th>Order number</th>
+            <th>Table</th>
+            <th>Price</th>
+            <th>Date</th>
+          </tr>
+          <tr id="row1" th:each = "invoice: ${invoices}">
+            <td id="no1" th:text="${invoice.id}"></td>
+            <td id="order1" class="editable"  th:text="${'N0000' + invoice.id}"></td>
+            <td id="table1" class="editable" th:text="${invoice.table_id}"></td>
+            <td id="price1" class="editable"  th:text = "${invoice.price} + '$'"></td>
+            <td id="date1" class="editable" th:text="${invoice.created_at}"></td>
+          </tr>
+        </table>
+      </div>
+  </div>
+</div>
+<div class="w-[70px] h-[40px] bg-gray-400 mt-5 rounded  text-white text-center px-2 py-2 font-bold">
+  <a th:href="@{/adminView}">
+    <button>Back</button>
+  </a>
+</div>
+
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          font-family: 'Molengo', sans-serif;
+          /* margin-top: 10rem; */
+        }
+        body #container { 
+          width: 50%;
+          /* height: 100%; */
+          border: 2px solid #4B371C;
+        }
+        body #container .order {
+          display: flex;
+          flex-direction: column;
+        }
+        body #container .order .table {
+          padding: 0.5rem;
+        }
+        body #container .order h1 {
+          border-bottom: 1px solid #4B371C;
+          padding: 0.5rem;
+        }
+        body #container .order table {
+          width: 100%;
+          border-collapse: collapse;
+          text-align: center;
+        }
+        body #container .order th {
+          background-color: antiquewhite;
+        }
+        body #container .order th, body #container .order td {
+          text-align: left;
+          padding: 1rem;
+        }
+        body #container .order tr:nth-child(even) {
+          background-color: #b9dcf3;
+        }
+        body #container .order .editable {
+          cursor: pointer;
+        }/*# sourceMappingURL=style.css.map */
+    </style>
+    
+   
+</body>
+</html>

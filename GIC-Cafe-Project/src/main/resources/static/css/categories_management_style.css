@@ -1,0 +1,67 @@
+.container{
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+}
+.row{
+    border: 2px solid rgb(107, 107, 107);
+}
+.new_category{
+    font-weight: bold;
+    font-size: 22px;
+    border-bottom: 0;
+    padding: 15px;
+}
+.input_category{
+    padding: 15px;
+}
+.btn2{
+    padding: 15px;
+}
+.input_info{
+    padding: 5px;
+}
+.input_info > div > div{
+    margin-top: 10px;
+}
+input{
+    float: right;
+    width: 170px;
+    height: 20px;
+}
+.add_info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.btn_ok{
+    width: 230px;
+    height: 30px;
+    background-color: #0d9e17;
+    color: #ffffff;
+    border: 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.btn_cancel{
+    width: 130px;
+    height: 30px;
+    float: right;
+    background-color: #652a0e;
+    border: 0;
+    color: #ffffff;
+    border-radius: 5px;
+    font-weight: bold;
+}
+@media only screen and (max-width: 768px) {
+    .container{
+        width: 60%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+    }
+}

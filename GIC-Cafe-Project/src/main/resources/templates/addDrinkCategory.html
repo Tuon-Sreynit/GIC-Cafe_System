@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Drink Category</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Molengo&display=swap" rel="stylesheet">
+  <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body{
+        font-family: 'Molengo', sans-serif;
+      }
+
+      .head{
+        font-weight: bold;
+        font-size: 27px;
+        border-bottom: 0;
+        padding: 10px;
+        background-color: #6a4928;
+        color: #fff;
+        margin: 0;
+      }
+      h2 {
+        font-size: 27px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        background-color: #6a4928;
+        color: #fff;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+      .btn_ok{
+        cursor: pointer;
+        padding: 10px;
+        text-align: center;
+        margin: 15px 10px 10px 0;
+        color: #ffffff;
+        border: 0;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 22px;
+        border-bottom: 1px solid #652a0e;
+    }
+    .btn_cancel{
+      
+        padding: 10px;
+        text-align: center;
+        margin: 15px 10px 10px 10px;
+        cursor: pointer;
+        border: 0;
+        color: #ffffff;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 22px;
+        border-bottom: 1px solid #652a0e;
+    }
+    .btn_cancel:hover{
+        color: #652a0e;
+        font-weight: bold;
+    }
+    .btn_ok:hover{
+        color: #652a0e;
+        font-weight: bold;
+    }
+    .gridCat{
+      display: grid;
+      grid-template-columns: 1fr 0.2fr 2fr;
+    }
+  </style>
+</head>
+<body>
+  <div  class="w-[100%] h-[100vh] absolute top-[0] left-[0] bg-[#f1f1f199]z-[100]">
+    <main class="w-[40%] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+      <form th:object="${dCategory}" th:action="@{/saveDrinkCategory}" method="post" class="p-3 w-full h-fit m-auto  border-[2px] border-solid border-[#4B371C] bg-[#ffffff]">
+        <div class="head">
+          <h2>New Drink Category</h2>
+        </div>
+        <div class="mt-5 gridCat m-5">
+          <label class="text-2xl font-bold" for="gcode">Category code </label>
+          <label class="text-2xl font-bold">:</label>
+          <input th:field="*{drinkCategoryCode}" type="text" name="category_code" placeholder="Category Code" class="category_name p-2 border-[1px] text-xl border-solid border-[#652a0e] rounded" />
+        </div>
+        <div class="mt-3 gridCat m-5">
+          <label class="text-2xl font-bold" for="gcode">Category Name </label>
+          <label class="text-2xl font-bold">:</label>
+          <input th:field="*{drinkCategoryName}" type="text" name="category_name" placeholder="Category Name" class="category_code p-2 border-[1px] text-xl border-solid border-[#652a0e] rounded" />
+        </div>
+        <div class="flex m-5">
+          <button type="submit" class="btn_ok w-[60%] hover:bg-green-200 bg-green-800">Create</button>
+          <button class="btn_cancel w-[40%] hover:bg-red-200 bg-red-800">Cancel</button>  
+        </div> 
+      </form>
+    </main>
+  </div>
+    
+      <script>
+        document.querySelector('.btn_cancel').addEventListener('click', () => {
+          clear();
+      });
+      
+      const clear=()=>{
+          document.querySelector('.category_name').value=""
+          document.querySelector('.category_code').value=""
+      }
+      </script>
+</body>
+</html>

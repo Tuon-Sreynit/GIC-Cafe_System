@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Molengo&display=swap" rel="stylesheet">
+</head>
+<style>
+  * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: 'Molengo', sans-serif;
+    }
+    
+    .main_wrapper {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+   
+    }
+    .main_wrapper .wrapper_box {
+        width: 100%;
+        height: 100%;
+        background-image: url(https://i.pinimg.com/736x/b0/c0/f9/b0c0f95d50f757a826d002f9e725231d.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        gap: 0.5rem;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+    .main_wrapper .wrapper_box .left_side {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 30rem;
+        font-size: 27px;
+        color: white;
+    }
+    
+    .main_wrapper .wrapper_box .left_side .title h2 {
+        font-size: 35px;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .main_wrapper .wrapper_box .left_side .desc1 {
+        margin-top: 1rem;
+        font-size: 20px;
+        text-align: center;
+    }
+    .main_wrapper .wrapper_box .left_side .desc2 {
+        font-size: 20px;
+        text-align: center;
+    }
+    .main_wrapper .wrapper_box .left_side form .username {
+        margin-top: 50px;
+        display: grid;
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
+
+    .main_wrapper .wrapper_box .left_side .username label{
+        margin-top: 5px;
+        font-size: 30px;
+        
+
+    }
+    .main_wrapper .wrapper_box .left_side .username input {
+        margin-top: 5px;
+        padding: 0.6rem;
+        font-family: 'Molengo', sans-serif;
+        font-size: 22px;
+        border-radius: 10px;
+        border: none;
+        background: transparent;
+        border-bottom: 1px solid white;
+        border-top: 1px solid white;
+        color: white;
+        font-weight: bold;
+    }
+    .main_wrapper .wrapper_box .left_side .password {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
+    .main_wrapper .wrapper_box .left_side .password label {
+        font-size: 30px;
+        
+    }
+    .main_wrapper .wrapper_box .left_side .password input {
+        margin-top: 5px;
+        padding: 0.6rem;
+        font-family: 'Molengo', sans-serif;
+        font-size: 22px;
+        border-radius: 10px;
+        border: none;
+        background: transparent;
+        border-bottom: 1px solid white;
+        border-top: 1px solid white;
+        color: white;
+        font-weight: bold;
+    }
+    .main_wrapper .wrapper_box .left_side .login_button button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 22px;
+        margin-top: 40px;
+        padding: 10px;
+        border: none;
+        background: black;
+        color: white;
+        font-weight: bold;
+        border-radius: 10px;
+        font-family: 'Molengo', sans-serif;
+    }
+    div .login_button button{
+        margin: auto;
+    }
+    .main_wrapper .wrapper_box .left_side .login_button button {
+        color: white;
+    }
+    .main_wrapper .wrapper_box .left_side .login_button button:hover{
+        border-bottom: 1px solid #6a4928;
+        border-top: 1px solid #6a4928;
+        box-shadow: inset 0px 10px 20px 2px #fff;
+        border: none;
+    }
+    h5{
+      text-align: center;
+    }
+</style>
+<body>
+  <div class="main_wrapper">
+    <div class="wrapper_box">
+      <div class="left_side">
+        <div class="title">
+          <h5>Login to GIC Cafe</h5>
+          <div class="desc1">
+            <p>Welcome to our coffee shop for study.</p>
+          </div>
+          <div class="desc2">
+            <p>Enjoy your value time with coffee.</p>
+          </div>
+          <form th:action="@{login/check}" method="POST">
+              <div class="username">
+                <label for="username">Username</label>
+                <input id="username" type="username" name="username" placeholder="Enter your username" required>
+              </div>
+              <div class="password">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Enter your password">
+              </div>
+              <div class="login_button">
+                  <button onclick="saveUsername()" type="submit">Login</button>
+              </div>
+          </form>
+          <div class="error" th:if="${errorMessage}">
+            <p style="color: red" th:text="${errorMessage}"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <script>
+    function saveUsername(){
+      localStorage.setItem("username", document.getElementById("username").value)
+    }
+  </script>
+</body>
+</html>

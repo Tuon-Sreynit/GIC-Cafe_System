@@ -1,0 +1,528 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');*{
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    font-family: 'Rubik', sans-serif;
+    // background-color: black;
+    font-size: 1.5rem;
+    display: flex;
+    // gap: .2rem;
+    gap: 2px;
+    width: 100%;
+    
+
+}
+.sidebar{
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10rem;
+    width: 15%;
+    background-color: rgb(166, 174, 245);
+    color: white;
+    height: 100vh;
+    
+    .image{
+        width: 100%;
+       
+       
+        img{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit:contain;
+            margin-left: 3.5rem;
+            margin-top: 3rem;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        }
+        .name{
+            display: flex;
+            justify-content: center;
+        }
+        .role{
+            display: flex;
+            justify-content: center;
+            
+        }
+    }
+    
+
+}
+.table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+  }
+  
+  td, th {
+    // border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+    color: black;
+   
+    
+    a{
+        color: black;
+        transition: 1s;
+        &:hover{
+            transform: scale(1.1);
+            color: red;
+        }
+    }
+   
+  }
+  
+  tr:nth-child(even) {
+    // background-color: #eeebeb;
+  }
+.main_wrapper{
+    
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    
+    // background-color: black;
+   
+    .wrapper_container{
+        display: flex;
+        // justify-content: center;
+        // align-items: center;
+        width: 85%;
+        height: 100vh;
+        position: absolute;
+        // border: 2px solid black;
+        flex-direction: column;
+
+        .topBar_container{
+            margin-top: 1rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            border: 2px solid black;
+            a{
+                text-decoration: none;
+                color: black;
+                display: flex;
+                align-items: center;
+
+                &:hover{
+                    color: orange;
+                }
+            }
+            .line{
+                width: 2px;
+                height: 2rem;
+                background-color: black;
+                display: flex;
+                align-items: center;
+            }
+        }
+        .manageBox{
+            display: flex;
+            // border: 2px solid black;
+            height: 100vh;
+            width: 100%;
+            // gap: px;
+            .left_box{
+                width: 50%;
+                /* Style the tab */
+                border: 2px solid black;
+                .tab {
+                    overflow: hidden;
+                    border: 1px solid #ccc;
+                    background-color: rgb(138, 202, 242);
+                }
+                 /* Style the buttons inside the tab */
+                .tab button {
+                    background-color: inherit;
+                    float: left;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    padding: 30px 30px;
+                    transition: 0.5s;
+                    font-size: 25px;
+                }
+                
+                /* Change background color of buttons on hover */
+                .tab button:hover {
+                    background-color: #f6f2f2;
+                    
+                }
+                
+                /* Create an active/current tablink class */
+                .tab button.active {
+                    background-color: #fefefe;
+                }
+                
+                /* Style the tab content */
+                .tabcontent {
+                    display: none;
+                    padding: 6px 12px;
+                    // border: 1px solid #657cef;
+                    border-top: none;
+                   
+                }
+                
+                .cashier_div{
+                    display: flex;
+                    gap: 5rem;
+                    background-color: rgb(192, 215, 251);
+                    font-size: 1.3rem;
+                }
+                .cashier_table{
+                    .row {
+                        display: flex;
+                        height: 3rem;
+                        gap: 6rem;
+                        display: flex;
+                        align-items: center;
+                        font-size: 1.1rem;
+                        &:hover{
+                            background-color: antiquewhite;
+                        }
+                        .text_box{
+                            display: flex;
+                            gap: 1rem;
+                        }
+                        .icon{
+                            font-size: 1.5rem;
+                            display: flex;
+                            align-items: center;
+                            i{
+                                color: blue;
+                                &:hover{
+                                    color: red;
+                               }
+                            }
+                        }
+                      
+                    }
+                }
+                //--------------- food Section -----------------
+                .food_div{
+                    display: flex;
+                    gap: 4rem;
+                    background-color: rgb(192, 215, 251);
+                    font-size: .9rem;
+
+                }
+                .food_table{
+                    .row {
+                        display: flex;
+                        height: 3rem;
+                        gap: 4rem;
+                        display: flex;
+                        align-items: center;
+                        font-size: 1.1rem;
+                        &:hover{
+                            background-color: antiquewhite;
+                        }
+                        .food_code{
+                            display: flex;
+                            gap: 1rem;
+                        }
+                        .icon{
+                            font-size: 1.5rem;
+                            display: flex;
+                            align-items: center;
+                            i{
+                                &:hover{
+                                    color: orange;
+                               }
+                            }
+                        }
+                      
+                    }
+                }
+                //DrinkSection-----------
+                .drink_div{
+                    display: flex;
+                    gap: 4rem;
+                    background-color: rgb(192, 215, 251);
+                    font-size: .9rem;
+
+                }
+                .drink_table{
+                    .list{
+                        background-color: black;
+                        color: white;
+                        height: 3rem;
+                        width: 50%;
+                        border-radius: 7px;
+                    }
+                    .row {
+                        display: flex;
+                        height: 3rem;
+                        gap: 4rem;
+                        display: flex;
+                        align-items: center;
+                        font-size: 1.1rem;
+                       
+                        .drink_code{
+                            display: flex;
+                            gap: 1rem;
+                        }
+                        a{
+                            i{
+                                color: blue;
+                                font-size: 1rem;
+                            }
+                            
+                        }
+                      
+                    }
+                }
+                    
+            }
+            .right_box{
+
+                //-------cashier box-------
+                // margin-top: 5rem;
+                background-color: rgb(0, 0, 0);
+                width: 50%;
+                height: 100%;
+                border: 2px solid black;
+                // border-radius: 8px;
+                .box{
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    .title{
+                        margin-top: 1rem;
+                        display: flex;
+                        justify-content: center;
+                        font-size: 2rem;
+                    }
+                    .box_wrapp{
+                        margin-top: 1rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 2rem;
+                        img{
+                            width: 30rem;
+                            height: 20rem;
+                            object-fit: cover;
+                            border: 1px solid black;
+                        }
+                        .wrap_img_info{
+                            font-size: 1.2rem;
+                            background-color: white;
+                            border-radius: 8px;
+                            
+                            
+                            height: auto;
+                            
+                            .details{
+                              
+                                .name{
+                                    display: flex;
+                                }
+                                .gender{
+                                    display: flex;
+
+                                }
+                                .age{
+                                    display: flex;
+
+                                }
+                                .Hired_date{
+                                    display: flex;
+
+                                }
+                                .serve{
+                                    display: flex;
+
+                                }
+                                .login{
+                                    display: flex;
+
+                                }
+                                .pass{
+                                    display: flex;
+
+                                }
+                                .last_login{
+                                    display: flex;
+
+                                }
+                            }
+                        }
+                    }
+                }
+                .cashier_bottom{
+                    margin-left: 1rem;
+                    margin-top: 1.5rem;
+                    .lastlogin{
+                        display: flex;
+                        
+                    }
+                    .lastorder{
+                        display: flex;
+                    }
+                }
+                //---------food box---------
+                .food_title{
+                    margin-top: 2rem;
+                    display: flex;
+                    justify-content: center;
+                    font-size: 3rem;
+                }
+                .image{
+                    display: flex;
+                    justify-content: center;
+                    
+                    img{
+                        width: 30rem;
+                        height: 20rem;
+                        display: flex;
+                        justify-content: center;
+                        object-fit: cover;
+                        border: 1px solid black;
+                    }
+                }
+                .food_text{
+                    margin-top: 2rem;
+                    display: flex;
+                    gap: 5rem;
+                    justify-content: center;
+                    font-size: 1.3rem;
+                    .left_text{
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                    }
+                    .right_text{
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                    }
+                }
+                // Drink section --------
+                background-color: rgb(240, 236, 244);
+                width: 50%;
+                height: 100%;
+                .box{
+                    .title{
+                        margin-top: 1rem;
+                        display: flex;
+                        justify-content: center;
+                        font-size: 2rem;
+                    }
+                    .box_wrapp{
+                        margin-left: .5rem;
+                        margin-top: 1rem;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 4rem;
+                        flex-direction: column;
+                        // font-size: 2rem;
+                        img{
+                            width: 100rem;
+                            height: 100vh;
+                            object-fit: cover;
+                            border: 2px solid black;
+                            // border-radius: 50%;
+                            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                        }
+                        .wrap_img_info{
+                            font-size: 2rem;
+                            background-color: white;
+                            width: 30rem;
+                            border-radius: 8px;
+                            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                            display: flex;
+                            justify-content: center;
+                            .details{
+                                .code{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    gap: 1rem;
+                                    p{
+                                        color: red;
+                                    }
+                                }
+                                .name{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    gap: 1rem;
+                                    p{
+                                        color: red;
+                                    }
+                                }
+                                .cate{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    gap: 1rem;
+                                    p{
+                                        color: red;
+                                    }
+                                }
+                                .price{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    gap: 1rem;
+                                    p{
+                                        color: red;
+                                    }
+                                }
+                                .order{
+                                    display: flex;
+                                    gap: 1rem;
+                                    justify-content: center;
+                                    align-items: center;
+                                    p{
+                                        color: red;
+                                    }
+
+                                }
+                                .note{
+                                    display: flex;
+                                    gap: 1rem;
+                                    justify-content: center;
+                                    align-items: center;
+                                    p{
+                                        color: red;
+                                    }
+
+                                }
+                               
+                            }
+                        }
+                       
+                    }
+                    .bottom{
+                        margin-top: 1rem;
+                        display: flex;
+                        margin-left: 2rem;
+                        gap: 1rem;
+                       
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+  
+ 
+
+
+

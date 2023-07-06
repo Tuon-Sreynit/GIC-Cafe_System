@@ -1,0 +1,239 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrapper{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    height: 100%;
+    border: 1px solid gray;
+    margin: auto;
+}
+.container_drinks{
+    width: 50%;
+}
+.drink_scroll{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 10px;
+    width: 96%;
+}
+.drinks{
+    text-align: center;
+    background-color: #652a0f;
+    color: #fff;
+    min-width: 100px;
+    height: 55px;
+    margin: auto 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-weight: bold;
+}
+.left_scroll{
+    background-color: #652a0f;
+    width: 80px;
+    height: 65px;
+    justify-content: start;
+}
+.left_scroll i{
+    position:relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+.right_scroll{
+    background-color: #652a0f;
+    width: 80px;
+    height: 65px;
+    justify-content: end;
+}
+.right_scroll i{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+.drink_types{
+    background-color: #ffff;
+    display: flex;
+    border: 2px solid #652a0f;
+    width: 600px;
+    height: 60px;
+    margin: auto;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+.drink_types::-webkit-scrollbar{
+    display: none;
+}
+.line1{
+    border-top: 1px solid gray;
+    width: 90%;
+    margin: auto;
+}
+.drink_menu{
+    height: 600px;
+    padding: 10px;
+    margin: 12px;
+    overflow-y: auto;
+}
+.cafe{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 4px;
+}
+img{
+    width: 135px; 
+    height: 110px; 
+}
+.cafe-row{
+    width: 100%;
+    position: relative;
+}
+.cafe-name{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.578);
+    height: min-content;
+    z-index: 1;
+    text-align: center;
+    padding: .4rem .7rem;
+    font-size: 14px;
+}
+.order_info{
+    width: 50%;
+    background-color: #652a0f;
+}
+.order_info > h2{
+    text-align: center;
+    font-size: 40px;
+    padding: 20px;
+}
+.display_info{
+    display: grid;
+    grid-template-columns: 1fr 0.7fr 0.4fr;
+    font-size: 18px;
+    height: 40px;
+    align-items: center;
+    align-content: center;
+    padding-left: 35px;
+}
+.display_info:hover{
+    background-color: #993003;
+}
+.id_title{
+    display: flex;
+}
+.id_title > .p_title{
+    margin-left: 35px;
+}
+#number{
+    border: 0; 
+    background-color: transparent;
+    width: 30px;
+    font-size: 18px;
+    outline: 0;
+}
+.size_quantity_price{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.edit_delete > svg{
+    margin-right: 30px;
+}
+.line2{
+    border-top: 1px solid #f8dccc;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+.line3{
+    border-top: 1px solid #694937;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .cafe{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 6px;
+    }
+    .order_info > h2{
+        text-align: center;
+        font-size: 30px;
+        padding: 7px;
+    }
+    .display_info{
+        display: grid;
+        grid-template-columns: auto;
+        font-size: 12px;
+        height: 40px;
+        align-items: center;
+        align-content: center;
+        padding-left: 35px;
+    }
+    .display_info:hover{
+        background-color: #c67648;
+    }
+    #number{
+        border: 0; 
+        background-color: transparent;
+        width: 20px;
+        font-size: 12px;
+        outline: 0;
+    }
+}
+@media only screen and (max-width: 992px) {
+}
+@media only screen and (max-width: 1200px) {
+}
+
+
+
+/* Style for the pop-up form */
+.popup-form {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black with opacity */
+}
+
+/* Style for the form content */
+.popup-form-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style for the close button */
+.popup-form-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.popup-form-close:hover,
+.popup-form-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Cashier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Molengo&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Molengo', sans-serif;
+            font-size: 25px;
+        }
+        button:hover{
+            box-shadow: 0 12px 16px 0 rgba(228, 209, 209, 0.24),0 17px 50px 0 rgba(90, 81, 81, 0.19);
+        }
+        .head{
+            font-weight: bold;
+            font-size: 22px;
+            border-bottom: 0;
+            padding: 10px;
+            background-color: #6a4928;
+            color: #fff;
+        }
+     
+        .btn_ok{
+            padding: 10px;
+            text-align: center;
+            margin: 15px 10px 10px 0;
+            color: #ffffff;
+            border: 0;
+            border-radius: 5px;
+            font-weight: bold;
+            border-bottom: 1px solid #652a0e;
+        }
+        .btn_cancel{
+            /* width: 120px;
+            height: 45px; */
+            padding: 10px;
+            text-align: center;
+            margin: 15px 10px 10px 10px;
+            
+            border: 0;
+            color: #ffffff;
+            border-radius: 5px;
+            font-weight: 600;
+            border-bottom: 1px solid #652a0e;
+        }
+        .img_cashier{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .img_bg{
+            width: 350px;
+            height: 350px;
+            background-color: #6a4928;
+            margin-left: 15px;
+            
+        }
+        input, #image_input{
+            color: #ffffff;
+        }
+        #image_input{
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            z-index: 2;
+            padding: 30px;
+        }
+        .btn_cancel:hover{
+            color: #652a0e;
+            font-weight: bold;
+        }
+        .btn_ok:hover{
+            color: #652a0e;
+            font-weight: bold;
+        }
+        .formDrid{
+            display: grid;
+            grid-template-columns: 1.5fr 0.2fr 2fr;
+        }
+    </style>
+</head>
+<body class="m-10">
+    <div class="new_drink w-[60%] h-fit absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]  border-[2px] border-solid border-[#652a0e]">
+        <div class="head p-3">
+            <h2>New Cashier</h2>
+        </div>
+        <div class="w-[100%] border-[1px] border-solid border-[#652a0e]">
+            <div class="flex">
+                <form class="p-3 flex justify-center" th:action="@{/saveCashier}" th:object="${cashier}" method="POST" enctype="multipart/form-data">
+                    <div>
+                        <div class=" mt-3 formDrid">
+                            <label for="f-name">First name</label>
+                            <label>:</label>
+                            <input type="text" name="f-name" th:field="*{firstName}" class="p-1 border-[1px] border-solid border-[#652a0e] rounded" placeholder="">
+                        </div>
+                        <div class=" mt-3 formDrid">
+                            <label for="l-name">Last name</label>
+                            <label>:</label>
+                            <input type="text" name="l-name" th:field="*{lastName}" class="p-1 border-[1px] border-solid border-[#652a0e] rounded" placeholder="">
+                        </div>
+                        <div class=" mt-3 formDrid">
+                            <label for="sex">Sex</label>
+                            <label>:</label>
+                            <select name="sex" th:field="*{sex}" class="p-1 border-[1px] border-solid border-[#652a0e] rounded">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class=" mt-3 formDrid">
+                            <label for="dob">Date of Birth</label>
+                            <label>:</label>
+                            <input type="date" name="dob" th:field="*{dob}" class="p-1 border-[1px] border-solid border-[#652a0e] rounded" placeholder="">
+                        </div>
+                        <div class=" mt-3 formDrid">
+                            <label for="username">Username</label>
+                            <label>:</label>
+                            <input type="text" name="username" th:field="*{username}" class="p-1 border-[1px] border-solid border-[#652a0e] rounded" placeholder="">
+                        </div>
+                        <div class=" mt-3 formDrid">
+                            <label for="pwd">Password</label>
+                            <label>:</label>
+                            <input type="password" name="pwd" th:field="*{password}"class="p-1 border-[1px] border-solid border-[#652a0e] rounded" placeholder="">
+                        </div>
+                        <div class=" flex ">
+                            <button class="btn_ok w-[60%] hover:bg-green-200 bg-green-800" type="submit">OK</button>
+                            <button class="btn_cancel w-[40%] hover:bg-red-200 bg-red-800">
+                                <a th:href="@{/adminView}">Cancel</a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="img_cashier px-3">
+                        <div class="img_bg"></div>
+                        <input id="image_input" name="photo" type="file" accept="image/png, image/jpg">
+                        <div id="display_image">    
+                        </div>
+                    </div>       
+                </form>
+            </div>
+        </div>   
+    </div>
+</body>
+</html>
